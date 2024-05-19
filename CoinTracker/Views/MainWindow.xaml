@@ -1,0 +1,27 @@
+﻿<Window x:Class="CoinTracker.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#F5F5F5">
+        <Grid Background="White" Grid.Row="1" Margin="25,40,25,15" >
+            <ListView Name="AssetList" ItemsSource="{Binding Assets}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="Rank"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Symbol}" Header="Symbol"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Supply}" Header="Supply"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding MaxSupply}" Header="MaxSupply"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding MarketCapUsd}" Header="MarketCapUsd"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding VolumeUsd24Hr}" Header="VolumeUsd24Hr"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="PriceUsd"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding ChangePercent24Hr}" Header="ChangePercent24Hr"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Vwap24Hr}" Header="Vwap24Hr"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Window>

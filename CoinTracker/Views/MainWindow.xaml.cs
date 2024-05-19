@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using CoinTracker.Service;
+using CoinTracker.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CoinTracker
+namespace CoinTracker.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
