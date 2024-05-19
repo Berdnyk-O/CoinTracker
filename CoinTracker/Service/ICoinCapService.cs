@@ -1,6 +1,10 @@
-﻿namespace CoinTracker.Service
+﻿using CoinTracker.Models;
+using System.Collections.ObjectModel;
+
+namespace CoinTracker.Service
 {
-    public class ICoinCapService
+    public interface ICoinCapService
     {
+        public Task<ObservableCollection<Asset>> GetAssets();
     }
 }

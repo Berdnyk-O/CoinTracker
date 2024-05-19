@@ -1,8 +1,11 @@
 ﻿using CoinTracker.Service;
+using CoinTracker.ViewModels;
 using CoinTracker.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Configuration;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Windows;
 
 namespace CoinTracker
@@ -16,12 +19,37 @@ namespace CoinTracker
 
         public App()
         {
-            string apiUrl = ConfigurationManager.AppSettings["api"];
+            string apiUrl = ConfigurationManager.AppSettings["api"]!;
 
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices((histContext, services) =>
                 {
-                    services.AddSingleton<MainWindow>();
+                    services.AddSingleton(opts =>
+                    {
+                        var httpClient = new HttpClient();
+                        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        httpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                        httpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("deflate"));
+
+                        return httpClient;
+                    });
+
+                    services.AddSingleton<ICoinCapService, CoinCapService>(otps =>
+                    {
+                        var httpClient = otps.GetRequiredService<HttpClient>();
+                        return new CoinCapService(httpClient, apiUrl);
+                    });
+
+                    services.AddSingleton<AssetViewModel>();
+                    services.AddSingleton<MainWindow>(serviceProvider =>
+                    {
+                        var viewModel = serviceProvider.GetRequiredService<AssetViewModel>();
+                        var mainWindow = new MainWindow
+                        {
+                            DataContext = viewModel
+                        };
+                        return mainWindow;
+                    });
                 })
                 .Build();
         }
