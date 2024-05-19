@@ -7,5 +7,6 @@ namespace CoinTracker.Service
     {
         public Task<ObservableCollection<Asset>> GetAssets();
         public Task<ObservableCollection<Rate>> GetRates();
+        public Task<ObservableCollection<Exchange>> GetExchanges();
     }
 }
