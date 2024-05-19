@@ -3,7 +3,7 @@ namespace CoinTracker.Models
 {
     public class BaseAssetResponse
     {
-        public Asset[] Data { get; set; }
+        public Asset[] Data { get; set; } = null!;
 
     }
 }
