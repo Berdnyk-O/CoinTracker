@@ -14,6 +14,7 @@ namespace CoinTracker.Service
         private const string AssetsEndpoint = "/assets";
         private const string RatesEndpoint = "/rates";
         private const string ExchangesEndpoint = "/exchanges";
+        private const string MarketsEndpoint = "/markets";
 
         public CoinCapService(HttpClient httpClient, string baseUrl)
         {
@@ -78,6 +79,26 @@ namespace CoinTracker.Service
                     return new ObservableCollection<Exchange>();
                 }
                 return new ObservableCollection<Exchange>(data.Data);
+            }
+        }
+
+        public async Task<ObservableCollection<Market>> GetMarkets()
+        {
+            var response = await _httpClient.GetAsync(_baseUrl + MarketsEndpoint);
+            response.EnsureSuccessStatusCode();
+
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var decompressedStream = new GZipStream(stream, CompressionMode.Decompress))
+            using (var reader = new StreamReader(decompressedStream))
+            {
+                var responseBody = await reader.ReadToEndAsync();
+                var data = JsonConvert.DeserializeObject<BaseMarketResponse>(responseBody);
+
+                if (data == null)
+                {
+                    return new ObservableCollection<Market>();
+                }
+                return new ObservableCollection<Market>(data.Data);
             }
         }
     }
