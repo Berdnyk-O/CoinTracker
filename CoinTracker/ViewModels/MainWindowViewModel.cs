@@ -15,6 +15,7 @@ namespace CoinTracker.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public RelayCommand NavigateToAssetsCommand { get; set; }
         public RelayCommand NavigateToExchangesCommand { get; set; }
         public RelayCommand NavigateToRatesCommand { get; set; }
