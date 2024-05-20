@@ -1,8 +1,21 @@
 ﻿<Application x:Class="CoinTracker.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CoinTracker">
+             xmlns:local="clr-namespace:CoinTracker"
+             xmlns:viewModel="clr-namespace:CoinTracker.ViewModels"
+             xmlns:view="clr-namespace:CoinTracker.Views">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type TypeName=viewModel:AssetsViewModel}">
+            <view:AssetsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModel:RatesViewModel}">
+            <view:RatesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModel:ExchangesViewModel}">
+            <view:ExchangesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModel:MarketsViewModel}">
+            <view:MarketsView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

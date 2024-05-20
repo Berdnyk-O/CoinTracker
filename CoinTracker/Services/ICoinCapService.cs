@@ -1,7 +1,7 @@
 ﻿using CoinTracker.Models;
 using System.Collections.ObjectModel;
 
-namespace CoinTracker.Service
+namespace CoinTracker.Services
 {
     public interface ICoinCapService
     {

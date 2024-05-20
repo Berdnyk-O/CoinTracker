@@ -4,7 +4,7 @@ using System.IO.Compression;
 using System.IO;
 using System.Net.Http;
 using Newtonsoft.Json;
-namespace CoinTracker.Service
+namespace CoinTracker.Services
 {
     public class CoinCapService : ICoinCapService
     {

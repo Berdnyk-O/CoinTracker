@@ -1,4 +1,4 @@
-﻿using CoinTracker.Service;
+﻿using CoinTracker.Services;
 using CoinTracker.ViewModels;
 using CoinTracker.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +24,7 @@ namespace CoinTracker
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices((histContext, services) =>
                 {
-                    services.AddSingleton(opts =>
+                    services.AddSingleton(serviceProvider =>
                     {
                         var httpClient = new HttpClient();
                         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -34,22 +34,35 @@ namespace CoinTracker
                         return httpClient;
                     });
 
-                    services.AddSingleton<ICoinCapService, CoinCapService>(otps =>
+                    services.AddSingleton<ICoinCapService, CoinCapService>(serviceProvider =>
                     {
-                        var httpClient = otps.GetRequiredService<HttpClient>();
+                        var httpClient = serviceProvider.GetRequiredService<HttpClient>();
                         return new CoinCapService(httpClient, apiUrl);
                     });
 
-                    services.AddSingleton<AssetViewModel>();
+                    services.AddSingleton<MainWindowViewModel>();
+                    services.AddSingleton<AssetsViewModel>();
+                    services.AddSingleton<RatesViewModel>();
+                    services.AddSingleton<ExchangesViewModel>();
+                    services.AddSingleton<MarketsViewModel>();
+
                     services.AddSingleton<MainWindow>(serviceProvider =>
                     {
-                        var viewModel = serviceProvider.GetRequiredService<AssetViewModel>();
+                        var viewModel = serviceProvider.GetRequiredService<MainWindowViewModel>();
                         var mainWindow = new MainWindow
                         {
                             DataContext = viewModel
                         };
                         return mainWindow;
                     });
+
+                    
+
+
+                    services.AddSingleton<INavigationService, NavigationService>();
+                    services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider =>
+                        viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+
                 })
                 .Build();
         }
