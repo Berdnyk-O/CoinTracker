@@ -5,29 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinTracker.ViewModels"
         mc:Ignorable="d"
-        Title="Window" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        Title="CoinTracker" Height="450" Width="800">
+    <Border Background="#7D8E95"
+            CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Button Content="Assets"
-                    Height="25"
-                    Command="{Binding NavigateToAssetsCommand}"/>
-            <Button Content="Rates"
-                    Height="25"
-                    Command="{Binding NavigateToRatesCommand}"/>
-            <Button Content="Exchanges"
-                Height="25"
-                Command="{Binding NavigateToExchangesCommand}"/>
-            <Button Content="Markets"
-                Height="25"
-                Command="{Binding NavigateToMarketsCommand}"/>
-        </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <ContentControl Grid.Column="1" Content="{Binding Navigation.CurrentView}">
-        </ContentControl>
-    </Grid>
+            <TextBlock Text="CoinTracker"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="22"/>
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="10,0,0,0"
+                     Grid.Column="1"
+                     Style="{StaticResource TextBoxTheme}"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <RadioButton Content="Assets"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             IsChecked="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToAssetsCommand}"/>
+                <RadioButton Content="Rates"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToRatesCommand}"/>
+                <RadioButton Content="Exchanges"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToExchangesCommand}"/>
+                <RadioButton Content="Markets"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding NavigateToMarketsCommand}"/>
+            </StackPanel>
+
+            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Navigation.CurrentView}">
+            </ContentControl>
+        </Grid>
+    </Border>
 </Window>

@@ -6,26 +6,39 @@
              xmlns:local="clr-namespace:CoinTracker.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#F5F5F5">
-        <Grid Background="White" Grid.Row="1" Margin="25,40,25,15" >
-            <ListView Name="AssetList" ItemsSource="{Binding Assets}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="Rank"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Symbol}" Header="Symbol"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Supply}" Header="Supply"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding MaxSupply}" Header="MaxSupply"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding MarketCapUsd}" Header="MarketCapUsd"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding VolumeUsd24Hr}" Header="VolumeUsd24Hr"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="PriceUsd"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding ChangePercent24Hr}" Header="ChangePercent24Hr"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Vwap24Hr}" Header="Vwap24Hr"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
-
+    
+    <Grid>
+        <TextBlock Text="Assets"
+           Foreground="White"
+           FontSize="28"
+           HorizontalAlignment="Left"
+           Margin="20,0,0,20"/>
+        <Border CornerRadius="10"
+                Background="White"
+                Margin="10,50,10,10">
+            <Grid Background="White" 
+                  Margin="10" >
+                <ListView Background="White"
+                      BorderThickness="0"
+                      FontSize="16"
+                      ItemsSource="{Binding Assets}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="Rank"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Symbol}" Header="Symbol"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Supply}" Header="Supply"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding MaxSupply}" Header="MaxSupply"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding MarketCapUsd}" Header="MarketCapUsd"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding VolumeUsd24Hr}" Header="VolumeUsd24Hr"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="PriceUsd"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding ChangePercent24Hr}" Header="ChangePercent24Hr"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Vwap24Hr}" Header="Vwap24Hr"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
