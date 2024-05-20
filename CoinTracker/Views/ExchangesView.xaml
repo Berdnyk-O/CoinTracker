@@ -6,15 +6,16 @@
              xmlns:local="clr-namespace:CoinTracker.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
+    <Grid>
         <TextBlock Text="Exchanges"
                    Foreground="White"
                    FontSize="28"
                    HorizontalAlignment="Left"
                    Margin="20,0,0,20"/>
         <Border CornerRadius="10" 
-                Background="White">
-            <StackPanel Background="White" 
+                Background="White"
+                Margin="0,50,0,0">
+            <Grid Background="White" 
                         Margin="10" >
                 <ListView Background="White"
                           BorderThickness="0"
@@ -34,7 +35,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </StackPanel>
+            </Grid>
         </Border>
-    </StackPanel>
+    </Grid>
 </UserControl>

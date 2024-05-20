@@ -10,7 +10,7 @@
             CornerRadius="20">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -23,10 +23,8 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Foreground="White"
-                       FontSize="20"/>
-            <TextBox Width="200"
-                     Height="30"
-                     VerticalAlignment="Center"
+                       FontSize="22"/>
+            <TextBox VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Margin="10,0,0,0"
                      Grid.Column="1"
