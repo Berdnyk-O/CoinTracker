@@ -1,20 +1,21 @@
 ﻿using CoinTracker.Models;
-using CoinTracker.Service;
+using CoinTracker.Services;
 using System.Collections.ObjectModel;
 
 namespace CoinTracker.ViewModels
 {
-    public class AssetViewModel : ViewModelBase
+    public class AssetsViewModel : ViewModelBase
     {
-        public ObservableCollection<Asset> Assets { get; set; }
+        public ObservableCollection<Asset> Assets { get; set; } = null!;
 
         private readonly ICoinCapService _coinCapService;
 
-        public AssetViewModel(ICoinCapService coinCapService)
+        public AssetsViewModel(ICoinCapService coinCapService)
         {
             _coinCapService = coinCapService;
             _ = LoadAssets();
         }
+
         private async Task LoadAssets()
         {
             Assets = await _coinCapService.GetAssets();
