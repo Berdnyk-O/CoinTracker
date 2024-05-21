@@ -7,20 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Rates"
-                   Foreground="White"
-                   FontSize="28"
-                   HorizontalAlignment="Left"
-                   Margin="20,0,0,20"/>
-        <Border CornerRadius="10" 
-                Background="White"
-               Margin="10,50,10,10">
-            <Grid Background="White" 
-                  Margin="10">
-                <ListView Background="White"
-                          BorderThickness="0"
-                          FontSize="16"
-                          ItemsSource="{Binding Rates}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 Margin="10,0,0,0"
+                 Width="250"
+                 Grid.Row="0"
+                 Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Exchanges"
+                       Foreground="White"
+                       FontSize="28"
+                       HorizontalAlignment="Left"
+                       Margin="20,0,0,20"/>
+            <Border CornerRadius="10"
+                    Background="White"
+                    Margin="10,10,10,10">
+                <Grid Background="White" 
+                      Margin="10" >
+                    <ListView Background="White"
+                              BorderThickness="0"
+                              FontSize="16"
+                              ItemsSource="{Binding FilteredRates}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
@@ -29,9 +41,10 @@
                             <GridViewColumn DisplayMemberBinding="{Binding Type}" Header="Type"/>
                             <GridViewColumn DisplayMemberBinding="{Binding RateUsd}" Header="RateUsd"/>
                         </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
-        </Border>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>

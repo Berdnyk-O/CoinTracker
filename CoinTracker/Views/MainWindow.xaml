@@ -24,12 +24,6 @@
                        HorizontalAlignment="Center"
                        Foreground="White"
                        FontSize="22"/>
-            <TextBox VerticalAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="10,0,0,0"
-                     Grid.Column="1"
-                     Style="{StaticResource TextBoxTheme}"/>
-
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <RadioButton Content="Assets"
                              Height="50"
@@ -58,7 +52,7 @@
                              Command="{Binding NavigateToMarketsCommand}"/>
             </StackPanel>
 
-            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Navigation.CurrentView}">
+            <ContentControl Grid.RowSpan="2" Grid.Column="1" Content="{Binding Navigation.CurrentView}">
             </ContentControl>
         </Grid>
     </Border>
