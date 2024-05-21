@@ -15,7 +15,7 @@
                                           VerticalAlignment="Center"
                                           Margin="10,0,0,0"/>
                             <TextBlock IsHitTestVisible="False"
-                                       Text="Search"
+                                       Text="{TemplateBinding Tag}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="10,0,0,0"

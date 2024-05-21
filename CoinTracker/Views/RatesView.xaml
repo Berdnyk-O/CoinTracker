@@ -18,6 +18,7 @@
                  Foreground="White"
                  Width="250"
                  Grid.Row="0"
+                Tag="Search by symbol"
                  Text="{Binding SeachSymbol, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource TextBoxTheme}"/>
         <StackPanel Grid.Row="1">
