@@ -6,39 +6,54 @@
              xmlns:local="clr-namespace:CoinTracker.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
     <Grid>
-        <TextBlock Text="Assets"
-           Foreground="White"
-           FontSize="28"
-           HorizontalAlignment="Left"
-           Margin="20,0,0,20"/>
-        <Border CornerRadius="10"
-                Background="White"
-                Margin="10,50,10,10">
-            <Grid Background="White" 
-                  Margin="10" >
-                <ListView Background="White"
-                      BorderThickness="0"
-                      FontSize="16"
-                      ItemsSource="{Binding Assets}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="Rank"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Symbol}" Header="Symbol"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Supply}" Header="Supply"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding MaxSupply}" Header="MaxSupply"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding MarketCapUsd}" Header="MarketCapUsd"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding VolumeUsd24Hr}" Header="VolumeUsd24Hr"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="PriceUsd"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding ChangePercent24Hr}" Header="ChangePercent24Hr"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding Vwap24Hr}" Header="Vwap24Hr"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
-        </Border>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBox VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 Tag="Search by name"
+                 Margin="10,0,0,0"
+                 Foreground="White"
+                 Width="250"
+                 Grid.Row="0"
+                 Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource TextBoxTheme}"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Assets"
+                       Foreground="White"
+                       FontSize="28"
+                       HorizontalAlignment="Left"
+                       Margin="20,0,0,20"/>
+            <Border CornerRadius="10"
+                    Background="White"
+                    Margin="10,10,10,10">
+                <Grid Background="White" 
+                      Margin="10" >
+                    <ListView Background="White"
+                              BorderThickness="0"
+                              FontSize="16"
+                              ItemsSource="{Binding FilteredAssets}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="Rank"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Symbol}" Header="Symbol"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Supply}" Header="Supply"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding MaxSupply}" Header="MaxSupply"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding MarketCapUsd}" Header="MarketCapUsd"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding VolumeUsd24Hr}" Header="VolumeUsd24Hr"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="PriceUsd"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding ChangePercent24Hr}" Header="ChangePercent24Hr"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Vwap24Hr}" Header="Vwap24Hr"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>
