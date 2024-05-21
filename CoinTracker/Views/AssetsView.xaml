@@ -15,9 +15,11 @@
         <TextBox VerticalAlignment="Center"
                  HorizontalAlignment="Left"
                  Margin="10,0,0,0"
+                 Foreground="White"
                  Width="250"
                  Grid.Row="0"
-                 Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource TextBoxTheme}"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Assets"
                        Foreground="White"

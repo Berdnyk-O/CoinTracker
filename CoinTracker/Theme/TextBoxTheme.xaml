@@ -11,14 +11,9 @@
                             Height="40">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
-                            <TextBox Margin="1"
-                                     Text="{TemplateBinding Text}"
-                                     BorderThickness="0"
-                                     Background="Transparent"
-                                     VerticalContentAlignment="Center"
-                                     Padding="5"
-                                     Foreground="#CFCFCF"
-                                     x:Name="SerachBox"/>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="Center"
+                                          Margin="10,0,0,0"/>
                             <TextBlock IsHitTestVisible="False"
                                        Text="Search"
                                        VerticalAlignment="Center"
@@ -26,13 +21,16 @@
                                        Margin="10,0,0,0"
                                        FontSize="11"
                                        Foreground="DarkGray"
-                                       Grid.Column="1">
+                                       x:Name="SearchTextBlock">
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=SerachBox}" Value="">
+                                            <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
                                                 <Setter Property="Visibility" Value="Visible"/>
                                             </DataTrigger>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </Trigger>
                                         </Style.Triggers>
                                         <Setter Property="Visibility" Value="Hidden"/>
                                     </Style>
