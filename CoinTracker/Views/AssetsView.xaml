@@ -7,12 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
-    <Grid>
+    <StackPanel>
         <TextBlock Text="Assets"
            Foreground="White"
            FontSize="28"
            HorizontalAlignment="Left"
            Margin="20,0,0,20"/>
+        <TextBox VerticalAlignment="Center"
+         HorizontalAlignment="Left"
+                 Width="250"
+         Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"/>
         <Border CornerRadius="10"
                 Background="White"
                 Margin="10,50,10,10">
@@ -21,7 +25,7 @@
                 <ListView Background="White"
                       BorderThickness="0"
                       FontSize="16"
-                      ItemsSource="{Binding Assets}">
+                      ItemsSource="{Binding FilteredAssets}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id"/>
@@ -40,5 +44,5 @@
                 </ListView>
             </Grid>
         </Border>
-    </Grid>
+    </StackPanel>
 </UserControl>
