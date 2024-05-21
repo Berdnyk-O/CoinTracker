@@ -20,15 +20,15 @@ namespace CoinTracker.ViewModels
             }
         }
 
-        private string _seachName = string.Empty;
-        public string SearchName
+        private string _seachSymbol = string.Empty;
+        public string SeachSymbol
         {
-            get => _seachName;
+            get => _seachSymbol;
             set
             {
-                _seachName = value;
+                _seachSymbol = value;
                 FilterRates();
-                OnPropertyChanged(nameof(SearchName));
+                OnPropertyChanged(nameof(SeachSymbol));
             }
         }
 
@@ -42,12 +42,11 @@ namespace CoinTracker.ViewModels
         {
             Rates = await _coinCapService.GetRates();
             FilteredRates = Rates;
-            OnPropertyChanged(nameof(Rates));
         }
 
         private void FilterRates()
         {
-            if (string.IsNullOrEmpty(_seachName))
+            if (string.IsNullOrEmpty(_seachSymbol))
             {
                 FilteredRates = Rates;
             }
@@ -55,7 +54,7 @@ namespace CoinTracker.ViewModels
             {
                 FilteredRates = new ObservableCollection<Rate>(
                     Rates.Where(x => x.Symbol.Contains(
-                        _seachName, StringComparison.InvariantCultureIgnoreCase)));
+                        _seachSymbol, StringComparison.InvariantCultureIgnoreCase)));
             }
         }
     }

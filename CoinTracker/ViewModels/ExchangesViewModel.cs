@@ -42,7 +42,6 @@ namespace CoinTracker.ViewModels
         {
             Exchanges = await _coinCapService.GetExchanges();
             FilteredExchanges = Exchanges;
-            OnPropertyChanged(nameof(Exchanges));
         }
 
         private void FilterExchanges()

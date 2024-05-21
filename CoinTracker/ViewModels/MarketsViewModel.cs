@@ -20,15 +20,15 @@ namespace CoinTracker.ViewModels
             }
         }
 
-        private string _seachName = string.Empty;
-        public string SearchName
+        private string _searchBaseId = string.Empty;
+        public string SearchBaseId
         {
-            get => _seachName;
+            get => _searchBaseId;
             set
             {
-                _seachName = value;
+                _searchBaseId = value;
                 FilterMarkets();
-                OnPropertyChanged(nameof(SearchName));
+                OnPropertyChanged(nameof(SearchBaseId));
             }
         }
 
@@ -42,12 +42,11 @@ namespace CoinTracker.ViewModels
         {
             Markets = await _coinCapService.GetMarkets();
             FilteredMarkets = Markets;
-            OnPropertyChanged(nameof(Markets));
         }
 
         private void FilterMarkets()
         {
-            if (string.IsNullOrEmpty(_seachName))
+            if (string.IsNullOrEmpty(_searchBaseId))
             {
                 FilteredMarkets = Markets;
             }
@@ -55,7 +54,7 @@ namespace CoinTracker.ViewModels
             {
                 FilteredMarkets = new ObservableCollection<Market>(
                     Markets.Where(x => x.BaseId.Contains(
-                        _seachName, StringComparison.InvariantCultureIgnoreCase)));
+                        _searchBaseId, StringComparison.InvariantCultureIgnoreCase)));
             }
         }
     }

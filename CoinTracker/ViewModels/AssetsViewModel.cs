@@ -6,9 +6,10 @@ namespace CoinTracker.ViewModels
 {
     public class AssetsViewModel : ViewModelBase
     {
-        public ObservableCollection<Asset> Assets { get; set; } = null!;
-        private ObservableCollection<Asset> _filteredAssets = new ObservableCollection<Asset>();
+        private readonly ICoinCapService _coinCapService;
 
+        public ObservableCollection<Asset> Assets { get; set; } = null!;
+        private ObservableCollection<Asset> _filteredAssets =  null!;
         public ObservableCollection<Asset> FilteredAssets
         {
             get => _filteredAssets;
@@ -18,8 +19,6 @@ namespace CoinTracker.ViewModels
                 OnPropertyChanged(nameof(FilteredAssets));
             }
         }
-
-        private readonly ICoinCapService _coinCapService;
 
         private string _seachName = string.Empty;
         public string SearchName

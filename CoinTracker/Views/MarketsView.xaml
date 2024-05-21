@@ -18,7 +18,7 @@
                  Foreground="White"
                  Width="250"
                  Grid.Row="0"
-                 Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
+                 Text="{Binding SearchBaseId, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource TextBoxTheme}"/>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Markets"
