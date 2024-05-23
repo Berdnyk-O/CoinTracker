@@ -8,7 +8,7 @@
         public string BaseSymbol { get; set; } = null!;
         public string QuoteSymbol { get; set; } = null!;
         public decimal VolumeUsd24Hr { get; set; }
-        public decimal priceUsd { get; set; }
-        public decimal volumePercent { get; set; }
+        public decimal PriceUsd { get; set; }
+        public decimal VolumePercent { get; set; }
     }
 }

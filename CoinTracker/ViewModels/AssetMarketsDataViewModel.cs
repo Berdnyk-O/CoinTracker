@@ -8,7 +8,16 @@ namespace CoinTracker.ViewModels
     {
         private readonly ICoinCapService _coinCapService;
 
-        public ObservableCollection<AssetMarketData> AssetMarkets { get; set; } = null!;
+        private ObservableCollection<AssetMarketData> _assetMarkets = null!;
+        public ObservableCollection<AssetMarketData> AssetMarkets
+        {
+            get => _assetMarkets;
+            set
+            {
+                _assetMarkets = value;
+                OnPropertyChanged(nameof(AssetMarkets));
+            }
+        }
 
         public AssetMarketsDataViewModel(ICoinCapService coinCapService, string id)
         {
@@ -19,6 +28,7 @@ namespace CoinTracker.ViewModels
         private async Task LoadAssetMarkets(string id)
         {
             AssetMarkets = await _coinCapService.GetMarketDataForAsset(id);
+            
         }
 
 

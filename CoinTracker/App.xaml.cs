@@ -42,6 +42,11 @@ namespace CoinTracker
 
                     services.AddSingleton<MainWindowViewModel>();
                     services.AddSingleton<AssetsViewModel>();
+                    services.AddSingleton<Func<string, AssetMarketsDataViewModel>>(serviceProvider => id =>
+                    {
+                        var coinCapService = serviceProvider.GetRequiredService<ICoinCapService>();
+                        return new AssetMarketsDataViewModel(coinCapService, id);
+                    });
                     services.AddSingleton<RatesViewModel>();
                     services.AddSingleton<ExchangesViewModel>();
                     services.AddSingleton<MarketsViewModel>();
@@ -56,12 +61,17 @@ namespace CoinTracker
                         return mainWindow;
                     });
 
-                    
-
-
                     services.AddSingleton<INavigationService, NavigationService>();
-                    services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider =>
-                        viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
+                    services.AddSingleton<Func<Type, string?, ViewModelBase>>(serviceProvider => (viewModelType, id) =>
+                    {
+                        if (viewModelType == typeof(AssetMarketsDataViewModel))
+                        {
+                            var factory = serviceProvider.GetRequiredService<Func<string, AssetMarketsDataViewModel>>();
+                            return factory(id);
+                        }
+
+                        return (ViewModelBase)serviceProvider.GetRequiredService(viewModelType);
+                    });
 
                 })
                 .Build();

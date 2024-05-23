@@ -38,12 +38,22 @@ namespace CoinTracker.ViewModels
             } 
         }
 
+        private INavigationService _navigationService = null!;
+        public INavigationService Navigation
+        {
+            get => _navigationService;
+            set
+            {
+                _navigationService = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand NavigateToAssetsCommand { get; }
 
-        public AssetsViewModel(ICoinCapService coinCapService)
+        public AssetsViewModel(ICoinCapService coinCapService, INavigationService navigationService)
         {
             _coinCapService = coinCapService;
-
+            Navigation = navigationService;
             NavigateToAssetsCommand = new RelayCommand(NavigateToAssets);
             _ = LoadAssets();
         }
@@ -70,7 +80,12 @@ namespace CoinTracker.ViewModels
 
         private void NavigateToAssets(object id)
         {
-            
+            /*var viewmodel = new AssetMarketsDataViewModel(_coinCapService, id.ToString());
+            Navigation.CurrentView = viewmodel;
+            OnPropertyChanged(nameof(viewmodel.AssetMarkets));
+            OnPropertyChanged(nameof(AssetMarketsDataViewModel));*/
+
+            Navigation.NavigateTo<AssetMarketsDataViewModel>(id.ToString());
         }
     }
 }

@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Assets"
+            <TextBlock Text="Asset Markets Data"
                        Foreground="White"
                        FontSize="28"
                        HorizontalAlignment="Left"
@@ -36,8 +36,8 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding BaseSymbol}" Header="Name"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding QuoteSymbol}" Header="Supply"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding VolumeUsd24Hr}" Header="MaxSupply"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding priceUsd}" Header="MarketCapUsd"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding volumePercent}" Header="VolumeUsd24Hr"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="MarketCapUsd"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding VolumePercent}" Header="VolumeUsd24Hr"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

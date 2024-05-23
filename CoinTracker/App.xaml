@@ -15,6 +15,9 @@
             <DataTemplate DataType="{x:Type viewModel:AssetsViewModel}">
                 <view:AssetsView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AssetMarketsDataViewModel}">
+                <view:AssetMarketsDataView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:RatesViewModel}">
                 <view:RatesView/>
             </DataTemplate>
