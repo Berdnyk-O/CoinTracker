@@ -6,6 +6,7 @@ namespace CoinTracker.Services
     public interface ICoinCapService
     {
         public Task<ObservableCollection<Asset>> GetAssets();
+        public Task<ObservableCollection<AssetMarketData>> GetMarketDataForAsset(string baseId);
         public Task<ObservableCollection<Rate>> GetRates();
         public Task<ObservableCollection<Exchange>> GetExchanges();
         public Task<ObservableCollection<Market>> GetMarkets();

@@ -49,6 +49,15 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding PriceUsd}" Header="PriceUsd"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding ChangePercent24Hr}" Header="ChangePercent24Hr"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding Vwap24Hr}" Header="Vwap24Hr"/>
+                                <GridViewColumn Header="Detail">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="see detail"
+                                                    Command="{Binding DataContext.NavigateToAssetsCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                    CommandParameter="{Binding Id}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
