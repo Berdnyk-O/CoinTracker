@@ -21,8 +21,13 @@
                  Grid.Row="0"
                  Text="{Binding SearchName, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource TextBoxTheme}"/>
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="Assets"
+        <DockPanel HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch" 
+                   Height="Auto" 
+                   Margin="10"
+                   Grid.Row="1">
+            <TextBlock DockPanel.Dock="Top"
+                       Text="Assets"
                        Foreground="White"
                        FontSize="28"
                        HorizontalAlignment="Left"
@@ -63,6 +68,6 @@
                     </ListView>
                 </Grid>
             </Border>
-        </StackPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
