@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Asset Markets Data"
+            <TextBlock Text="{Binding AssetId}"
                        Foreground="White"
                        FontSize="28"
                        HorizontalAlignment="Left"

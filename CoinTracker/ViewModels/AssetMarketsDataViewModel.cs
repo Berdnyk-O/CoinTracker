@@ -19,9 +19,12 @@ namespace CoinTracker.ViewModels
             }
         }
 
+        public string AssetId { get; set; } 
+
         public AssetMarketsDataViewModel(ICoinCapService coinCapService, string id)
         {
             _coinCapService = coinCapService;
+            AssetId = $"Assets Markets Data: {id}";
             _ = LoadAssetMarkets(id);
         }
 
