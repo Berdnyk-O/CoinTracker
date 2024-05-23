@@ -1,11 +1,7 @@
 ﻿using CoinTracker.Models;
 using CoinTracker.Services;
 using System.Collections.ObjectModel;
-using System.Windows.Controls.Primitives;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows;
-using System.Xml;
 using CoinTracker.Commands;
 
 namespace CoinTracker.ViewModels
@@ -53,9 +49,10 @@ namespace CoinTracker.ViewModels
         public AssetsViewModel(ICoinCapService coinCapService, INavigationService navigationService)
         {
             _coinCapService = coinCapService;
+            _ = LoadAssets();
+
             Navigation = navigationService;
             NavigateToAssetsCommand = new RelayCommand(NavigateToAssets);
-            _ = LoadAssets();
         }
 
         private async Task LoadAssets()
@@ -80,11 +77,6 @@ namespace CoinTracker.ViewModels
 
         private void NavigateToAssets(object id)
         {
-            /*var viewmodel = new AssetMarketsDataViewModel(_coinCapService, id.ToString());
-            Navigation.CurrentView = viewmodel;
-            OnPropertyChanged(nameof(viewmodel.AssetMarkets));
-            OnPropertyChanged(nameof(AssetMarketsDataViewModel));*/
-
             Navigation.NavigateTo<AssetMarketsDataViewModel>(id.ToString());
         }
     }

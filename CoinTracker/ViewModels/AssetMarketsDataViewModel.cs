@@ -31,9 +31,6 @@ namespace CoinTracker.ViewModels
         private async Task LoadAssetMarkets(string id)
         {
             AssetMarkets = await _coinCapService.GetMarketDataForAsset(id);
-            
         }
-
-
     }
 }
