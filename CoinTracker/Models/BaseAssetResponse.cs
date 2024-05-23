@@ -1,5 +1,4 @@
-﻿
-namespace CoinTracker.Models
+﻿namespace CoinTracker.Models
 {
     public class BaseAssetResponse
     {

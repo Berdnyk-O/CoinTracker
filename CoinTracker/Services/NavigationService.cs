@@ -4,9 +4,9 @@ namespace CoinTracker.Services
 {
     public class NavigationService : ViewModelBase, INavigationService
     {
-        private Func<Type,string?, ViewModelBase> _viewModelFactory;
-        private ViewModelBase _currentViewModel;
+        private Func<Type,string?, ViewModelBase> _viewModelFactory = null!;
 
+        private ViewModelBase _currentViewModel = null!;
         public ViewModelBase CurrentView 
         {
             get => _currentViewModel;
