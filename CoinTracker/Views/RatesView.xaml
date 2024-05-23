@@ -27,7 +27,7 @@
                    Margin="10"
                    Grid.Row="1">
             <TextBlock DockPanel.Dock="Top"
-                       Text="Exchanges"
+                       Text="Rates"
                        Foreground="White"
                        FontSize="28"
                        HorizontalAlignment="Left"

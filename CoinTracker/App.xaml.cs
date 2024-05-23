@@ -63,7 +63,7 @@ namespace CoinTracker
                         return mainWindow;
                     });
 
-                    services.AddSingleton<Func<Type, string?, ViewModelBase>>(serviceProvider => (viewModelType, id) =>
+                    services.AddSingleton<Func<Type, string, ViewModelBase>>(serviceProvider => (viewModelType, id) =>
                     {
                         if (viewModelType == typeof(AssetMarketsDataViewModel))
                         {
