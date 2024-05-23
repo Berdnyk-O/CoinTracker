@@ -1,6 +1,12 @@
 ﻿using CoinTracker.Models;
 using CoinTracker.Services;
 using System.Collections.ObjectModel;
+using System.Windows.Controls.Primitives;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows;
+using System.Xml;
+using CoinTracker.Commands;
 
 namespace CoinTracker.ViewModels
 {
@@ -32,9 +38,13 @@ namespace CoinTracker.ViewModels
             } 
         }
 
+        public ICommand NavigateToAssetsCommand { get; }
+
         public AssetsViewModel(ICoinCapService coinCapService)
         {
             _coinCapService = coinCapService;
+
+            NavigateToAssetsCommand = new RelayCommand(NavigateToAssets);
             _ = LoadAssets();
         }
 
@@ -56,6 +66,11 @@ namespace CoinTracker.ViewModels
                     Assets.Where(x => x.Name.Contains(
                         _seachName, StringComparison.InvariantCultureIgnoreCase)));
             }
+        }
+
+        private void NavigateToAssets(object id)
+        {
+            
         }
     }
 }
